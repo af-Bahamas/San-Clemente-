@@ -2,6 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <!-- SEO -->
+  <meta name="description" content="San Clemente Swiss Alpine Water — Among the lightest mineral waters in Europe. Zero PFAS, zero microplastics. Delivered across Nassau, Bahamas by Champion Spirit International.">
+  <meta name="keywords" content="San Clemente water, Swiss mineral water Nassau, premium water Bahamas, water delivery Nassau, alpine water Bahamas, still water sparkling water Nassau">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sanclementeswisswater.com/">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="San Clemente Swiss Water — Nassau, Bahamas">
+  <meta property="og:description" content="Among the lightest mineral waters in Europe. Zero PFAS. Zero microplastics. Delivered across Nassau by Champion Spirit International.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sanclementeswisswater.com">
+  <meta property="og:image" content="https://sanclementeswisswater.com/images/hero.png">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="San Clemente Swiss Water · Nassau">
+  <meta name="twitter:description" content="The lightest mineral water in Europe. Delivered across Nassau, Bahamas.">
+  <meta name="twitter:image" content="https://sanclementeswisswater.com/images/hero.png">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "San Clemente Swiss Water Nassau",
+    "description": "Premium Swiss alpine mineral water distributed in Nassau, Bahamas by Champion Spirit International",
+    "url": "https://sanclementeswisswater.com",
+    "telephone": "+12428125052",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lot 9-10 South Ocean Boulevard",
+      "addressLocality": "Nassau",
+      "addressRegion": "New Providence",
+      "addressCountry": "BS"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.0110141,
+      "longitude": -77.5204806
+    },
+    "openingHours": "Mo-Su 08:00-20:00",
+    "priceRange": "$$",
+    "servesCuisine": "Natural Mineral Water"
+  }
+  </script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>San Clemente Swiss Water · Nassau, Bahamas</title>
 <style>
@@ -248,6 +295,51 @@ footer{
   footer{flex-direction:column;gap:20px;padding:40px 24px;text-align:center;}
   .footer-info{text-align:center;}
 }
+
+/* ORDER MODAL */
+.modal-overlay {
+  position:fixed;inset:0;background:rgba(7,30,61,0.95);z-index:1000;
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:#fff;max-width:520px;width:100%;padding:48px 40px;
+  position:relative;max-height:90vh;overflow-y:auto;
+}
+.modal-close {
+  position:absolute;top:20px;right:20px;background:none;border:none;
+  font-size:24px;cursor:pointer;color:#888;line-height:1;
+}
+.modal-title { font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:#071e3d;margin-bottom:6px; }
+.modal-product { font-size:12px;color:#c9a96e;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px; }
+.form-group { margin-bottom:20px; }
+.form-group label { display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#888;margin-bottom:8px; }
+.form-group input, .form-group select, .form-group textarea {
+  width:100%;border:1px solid #ddd;padding:12px 14px;font-family:'Jost',sans-serif;
+  font-size:14px;color:#333;outline:none;transition:border-color .2s;background:#fff;
+}
+.form-group input:focus, .form-group select:focus { border-color:#071e3d; }
+.delivery-options { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px; }
+.delivery-opt {
+  border:2px solid #ddd;padding:16px;cursor:pointer;text-align:center;transition:all .2s;
+}
+.delivery-opt.selected { border-color:#071e3d;background:#071e3d; }
+.delivery-opt.selected .opt-title { color:#fff; }
+.delivery-opt.selected .opt-price { color:#c9a96e; }
+.opt-title { font-size:13px;color:#333;font-weight:500;margin-bottom:4px; }
+.opt-price { font-size:11px;color:#888; }
+#address-field { display:none; }
+.form-submit {
+  width:100%;background:#071e3d;color:#fff;border:none;padding:16px;
+  font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;margin-top:8px;
+}
+.form-submit:hover { background:#c9a96e; }
+.form-submit:disabled { opacity:.5;cursor:not-allowed; }
+.modal-total { text-align:right;margin-bottom:16px; }
+.modal-total-label { font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase; }
+.modal-total-price { font-family:'Cormorant Garamond',serif;font-size:28px;color:#071e3d;font-weight:300; }
+
 </style>
 </head>
 <body>
@@ -349,28 +441,28 @@ footer{
   <div class="products-grid" id="grid-b2c">
     <div class="pcard hero-card">
       <div class="pcard-tag">★ Caribbean Edition</div>
-      <div class="pcard-name">Plenilunium Sparkling 33cl Glass</div>
+      <div class="pcard-name" data-name="Plenilunium Sparkling 33cl Glass" data-price="500" data-tag="★ Caribbean Edition">Plenilunium Sparkling 33cl Glass</div>
       <div class="pcard-desc">Signature sparkling in Caribbean edition glass. The choice of Nassau's finest tables.</div>
       <div class="pcard-price">$5 <span>/ bottle</span></div>
       <a href="https://buy.stripe.com/28EdR9egv9FP3TJbUub7A1V" class="pcard-btn" target="_blank">Order →</a>
     </div>
     <div class="pcard">
       <div class="pcard-tag">Caribbean Edition</div>
-      <div class="pcard-name">Still Water 33cl Glass</div>
+      <div class="pcard-name" data-name="Still Water 33cl Glass" data-price="500" data-tag="Caribbean Edition">Still Water 33cl Glass</div>
       <div class="pcard-desc">Pure alpine stillness in our Caribbean glass bottle. Graceful at any table.</div>
       <div class="pcard-price">$5 <span>/ bottle</span></div>
       <a href="https://buy.stripe.com/fZueVd6O33hr61R5w6b7A1K" class="pcard-btn" target="_blank">Order →</a>
     </div>
     <div class="pcard">
       <div class="pcard-tag">Premium Glass</div>
-      <div class="pcard-name">Still Water 1.0L Glass</div>
+      <div class="pcard-name" data-name="Still Water 1.0L Glass" data-price="700" data-tag="Premium Glass">Still Water 1.0L Glass</div>
       <div class="pcard-desc">The full-size glass experience. For private dining, home, and the discerning palate.</div>
       <div class="pcard-price">$7 <span>/ bottle</span></div>
       <a href="https://buy.stripe.com/14A9ATc8ng4dfCrgaKb7A1L" class="pcard-btn" target="_blank">Order →</a>
     </div>
     <div class="pcard">
       <div class="pcard-tag">Daily Hydration</div>
-      <div class="pcard-name">Still Water 500ml PET</div>
+      <div class="pcard-name" data-name="Still Water 500ml PET" data-price="400" data-tag="Daily Hydration">Still Water 500ml PET</div>
       <div class="pcard-desc">Ideal for sport, travel, and everyday wellness. Recommended for low-sodium diets.</div>
       <div class="pcard-price">$4 <span>/ bottle</span></div>
       <a href="https://buy.stripe.com/dRm5kDegvaJTai78Iib7A1F" class="pcard-btn" target="_blank">Order →</a>
@@ -472,6 +564,129 @@ function showPricing(type, el) {
     document.getElementById('grid-b2b').style.display = 'grid';
     document.getElementById('note-b2c').style.display = 'none';
     document.getElementById('note-b2b').style.display = 'inline';
+  }
+}
+</script>
+
+
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-product" id="modal-product-tag">Caribbean Edition</div>
+    <div class="modal-title" id="modal-product-name">Plenilunium Sparkling 33cl</div>
+    
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="email" id="order-email" placeholder="your@email.com" required>
+    </div>
+    
+    <label style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#888;display:block;margin-bottom:12px;">Delivery option</label>
+    <div class="delivery-options">
+      <div class="delivery-opt selected" id="opt-pickup" onclick="selectDelivery('pickup')">
+        <div class="opt-title">Pickup</div>
+        <div class="opt-price">Free · Nassau</div>
+      </div>
+      <div class="delivery-opt" id="opt-delivery" onclick="selectDelivery('delivery')">
+        <div class="opt-title">Home Delivery</div>
+        <div class="opt-price">+$50 · Nassau</div>
+      </div>
+    </div>
+    
+    <div id="address-field" class="form-group">
+      <label>Delivery address</label>
+      <input type="text" id="order-address" placeholder="Street address, Nassau, New Providence">
+    </div>
+    
+    <div class="modal-total">
+      <div class="modal-total-label">Total</div>
+      <div class="modal-total-price" id="modal-total">$5.00</div>
+    </div>
+    
+    <button class="form-submit" id="checkout-btn" onclick="submitOrder()">Proceed to Payment →</button>
+  </div>
+</div>
+
+<script>
+let currentProduct = { name: '', price: 0 };
+let deliveryChoice = 'pickup';
+
+function openOrder(name, price, tag) {
+  currentProduct = { name, price };
+  document.getElementById('modal-product-name').textContent = name;
+  document.getElementById('modal-product-tag').textContent = tag || '';
+  updateTotal();
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectDelivery(type) {
+  deliveryChoice = type;
+  document.getElementById('opt-pickup').classList.toggle('selected', type === 'pickup');
+  document.getElementById('opt-delivery').classList.toggle('selected', type === 'delivery');
+  document.getElementById('address-field').style.display = type === 'delivery' ? 'block' : 'none';
+  updateTotal();
+}
+
+function updateTotal() {
+  const base = currentProduct.price / 100;
+  const total = deliveryChoice === 'delivery' ? base + 50 : base;
+  document.getElementById('modal-total').textContent = '$' + total.toFixed(2);
+}
+
+async function submitOrder() {
+  const email = document.getElementById('order-email').value;
+  const address = document.getElementById('order-address').value;
+  
+  if (!email) { alert('Please enter your email address.'); return; }
+  if (deliveryChoice === 'delivery' && !address) { alert('Please enter your delivery address.'); return; }
+  
+  const btn = document.getElementById('checkout-btn');
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+  
+  try {
+    const res = await fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        product_name: currentProduct.name,
+        product_price: currentProduct.price,
+        quantity: 1,
+        delivery: deliveryChoice,
+        email: email,
+        address: address
+      })
+    });
+    const data = await res.json();
+    if (data.url) { window.location.href = data.url; }
+    else { throw new Error('No checkout URL'); }
+  } catch(e) {
+    alert('Error processing order. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Proceed to Payment →';
+  }
+}
+
+document.getElementById('orderModal').addEventListener('click', function(e) {
+  if(e.target === this) closeModal();
+});
+</script>
+
+
+<script>
+function orderFromCard(btn) {
+  const card = btn.closest('.pcard');
+  const nameEl = card.querySelector('[data-name]');
+  if (nameEl) {
+    openOrder(nameEl.dataset.name, parseInt(nameEl.dataset.price), nameEl.dataset.tag);
+  } else {
+    const name = card.querySelector('.pcard-name').textContent;
+    openOrder(name, 500, '');
   }
 }
 </script>
