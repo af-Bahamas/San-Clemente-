@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Clemente Swiss Water · Nassau, Bahamas</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#071e3d;
+  --mid:#0d3a6b;
+  --gold:#c9a96e;
+  --white:#ffffff;
+  --cream:#f8f5ef;
+  --grey:#888;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;color:var(--blue);background:var(--white);overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:28px 72px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(to bottom,rgba(7,30,61,0.9) 0%,transparent 100%);
+  transition:background .3s;
+}
+.nav-brand{display:flex;flex-direction:column;}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#fff;letter-spacing:5px;text-transform:uppercase;}
+.nav-origin{font-size:9px;letter-spacing:5px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:2px;}
+.nav-links{display:flex;gap:40px;align-items:center;}
+.nav-links a{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-order{font-size:10px;letter-spacing:3px;color:var(--gold);text-decoration:none;text-transform:uppercase;border:1px solid var(--gold);padding:10px 24px;transition:all .2s;}
+.nav-order:hover{background:var(--gold);color:#fff;}
+
+/* HERO */
+.hero{
+  height:100vh;min-height:700px;
+  position:relative;overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('images/hero.png') center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(7,30,61,0.75) 0%,rgba(7,30,61,0.3) 60%,rgba(7,30,61,0.5) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  height:100%;display:flex;flex-direction:column;justify-content:center;
+  padding:0 72px;
+}
+.hero-eyebrow{font-size:9px;letter-spacing:9px;color:var(--gold);text-transform:uppercase;margin-bottom:30px;}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:88px;font-weight:200;color:#fff;
+  line-height:.9;letter-spacing:-2px;max-width:750px;
+}
+.hero-title em{color:var(--gold);font-style:italic;}
+.hero-rule{width:50px;height:1px;background:var(--gold);margin:36px 0;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.6);line-height:2;max-width:440px;font-weight:300;}
+.hero-cta{margin-top:48px;display:flex;gap:20px;align-items:center;}
+.btn-primary{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  background:var(--gold);color:#fff;text-decoration:none;
+  padding:16px 40px;transition:opacity .2s;
+}
+.btn-primary:hover{opacity:.85;}
+.btn-ghost{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.btn-ghost:hover{color:#fff;border-color:#fff;}
+.hero-scroll{
+  position:absolute;bottom:48px;right:72px;z-index:2;
+  font-size:9px;letter-spacing:4px;color:rgba(255,255,255,0.4);
+  text-transform:uppercase;display:flex;align-items:center;gap:12px;
+  writing-mode:vertical-rl;
+}
+
+/* NUMBERS STRIP */
+.strip{
+  background:var(--blue);
+  padding:56px 72px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.strip-item{text-align:center;}
+.strip-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:60px;font-weight:200;color:var(--gold);line-height:1;
+}
+.strip-unit{font-size:16px;color:rgba(255,255,255,0.4);margin-left:2px;}
+.strip-label{font-size:9px;letter-spacing:4px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-top:10px;}
+
+/* ORIGIN SECTION */
+.origin{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:600px;
+}
+.origin-img{
+  background:url('images/source.png') center/cover no-repeat;
+  min-height:500px;
+}
+.origin-content{
+  background:var(--cream);
+  padding:100px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.s-label{font-size:9px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--blue);line-height:1.1;margin-bottom:10px;}
+.s-rule{width:40px;height:1px;background:var(--gold);margin:24px 0;}
+.s-text{font-size:14px;color:#555;line-height:2;font-weight:300;margin-bottom:30px;}
+.s-specs{display:flex;flex-direction:column;gap:14px;}
+.spec-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #ddd;}
+.spec-name{font-size:12px;color:#777;letter-spacing:1px;}
+.spec-val{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--blue);font-weight:400;}
+
+/* BOTTLE SHOWCASE */
+.showcase{
+  min-height:700px;position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+.showcase-img{
+  position:absolute;inset:0;
+  background:url('images/bottle.png') center/cover no-repeat;
+}
+.showcase-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,30,61,0.92) 0%,rgba(7,30,61,0.6) 50%,transparent 100%);
+}
+.showcase-content{
+  position:relative;z-index:2;
+  padding:100px 72px;max-width:560px;
+}
+.showcase-content .s-title{color:#fff;}
+.showcase-content .s-text{color:rgba(255,255,255,0.65);}
+
+/* PRODUCTS */
+.products{padding:100px 72px;background:var(--white);}
+.products-header{text-align:center;margin-bottom:70px;}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.pcard{
+  background:var(--cream);padding:40px 30px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:background .2s;
+}
+.pcard:hover{background:#ede9e0;}
+.pcard.hero-card{background:var(--blue);}
+.pcard-tag{font-size:8px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;}
+.pcard-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--blue);font-weight:300;line-height:1.3;}
+.pcard.hero-card .pcard-name{color:#fff;}
+.pcard-desc{font-size:12px;color:#777;line-height:1.8;flex:1;}
+.pcard.hero-card .pcard-desc{color:rgba(255,255,255,0.55);}
+.pcard-price{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--blue);font-weight:300;}
+.pcard.hero-card .pcard-price{color:#fff;}
+.pcard-price span{font-size:13px;color:#aaa;font-family:'Jost',sans-serif;}
+.pcard-btn{
+  display:block;text-align:center;background:var(--blue);color:#fff;
+  text-decoration:none;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  padding:13px;margin-top:auto;transition:background .2s;
+}
+.pcard-btn:hover{background:var(--gold);}
+.pcard.hero-card .pcard-btn{background:var(--gold);}
+.pcard.hero-card .pcard-btn:hover{background:rgba(201,169,110,.8);}
+.products-note{text-align:center;margin-top:40px;font-size:12px;color:#aaa;letter-spacing:1px;}
+
+/* LIFESTYLE */
+.lifestyle{
+  min-height:600px;position:relative;overflow:hidden;
+}
+.lifestyle-img{
+  position:absolute;inset:0;
+  background:url('images/lifestyle.png') center/cover no-repeat;
+}
+.lifestyle-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(7,30,61,0.85) 0%,rgba(7,30,61,0.2) 60%,transparent 100%);
+}
+.lifestyle-content{
+  position:relative;z-index:2;height:100%;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:72px;
+}
+.lifestyle-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:200;font-style:italic;
+  color:#fff;max-width:700px;line-height:1.2;
+}
+.lifestyle-author{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-top:20px;}
+
+
+/* PRICING TOGGLE */
+.pricing-toggle {
+  display:flex; gap:0; margin:40px auto 0; width:fit-content;
+  border:1px solid #ddd;
+}
+.ptab {
+  padding:12px 32px; font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  background:#fff; color:#888; border:none; cursor:pointer; transition:all .2s;
+  font-family:'Jost',sans-serif;
+}
+.ptab.active { background:var(--blue); color:#fff; }
+
+/* DELIVERY */
+.delivery{
+  background:var(--blue);
+  padding:100px 72px;
+  display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;
+}
+.delivery .s-title{color:#fff;}
+.delivery .s-text{color:rgba(255,255,255,0.55);}
+.del-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.del-item{
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;gap:16px;
+  font-size:13px;color:rgba(255,255,255,0.7);
+}
+.del-item::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+
+/* FOOTER */
+footer{
+  background:#040f20;
+  padding:60px 72px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-brand .nav-name{font-size:18px;}
+.footer-info{font-size:11px;color:rgba(255,255,255,0.3);text-align:right;line-height:2;}
+
+@media(max-width:900px){
+  nav{padding:20px 24px;}
+  .nav-links{display:none;}
+  .hero-content{padding:0 24px;}
+  .hero-title{font-size:52px;}
+  .strip{grid-template-columns:repeat(2,1fr);padding:40px 24px;gap:30px;}
+  .origin{grid-template-columns:1fr;}
+  .origin-content{padding:60px 30px;}
+  .showcase-content{padding:60px 30px;}
+  .products{padding:60px 24px;}
+  .products-grid{grid-template-columns:1fr 1fr;gap:2px;}
+  .delivery{grid-template-columns:1fr;padding:60px 30px;gap:40px;}
+  footer{flex-direction:column;gap:20px;padding:40px 24px;text-align:center;}
+  .footer-info{text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-name">San Clemente</div>
+    <div class="nav-origin">Swiss Alpine Water · Nassau</div>
+  </div>
+  <div class="nav-links">
+    <a href="#origin">Our Source</a>
+    <a href="#products">Shop</a>
+    <a href="#delivery">Delivery</a>
+  </div>
+  <a href="#products" class="nav-order">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Natural Mineral Water · Switzerland</div>
+    <h1 class="hero-title">Pure<br>as the <em>Alps</em><br>themselves.</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">Born at Monte Tamaro in the Swiss pre-Alps. Among the lightest mineral waters in Europe. Zero PFAS. Zero microplastics. Now delivered across Nassau.</p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">Discover the Collection</a>
+      <a href="#origin" class="btn-ghost">Our Source ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">38<span class="strip-unit">mg/l</span></div>
+    <div class="strip-label">Fixed Residue</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">1.9<span class="strip-unit">mg/l</span></div>
+    <div class="strip-label">Sodium</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">0</div>
+    <div class="strip-label">PFAS &amp; Microplastics</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">6.92</div>
+    <div class="strip-label">Natural pH</div>
+  </div>
+</div>
+
+<!-- ORIGIN -->
+<section class="origin" id="origin">
+  <div class="origin-img"></div>
+  <div class="origin-content">
+    <div class="s-label">The Source</div>
+    <h2 class="s-title">Caslascio.<br>Monte Tamaro.<br>Switzerland.</h2>
+    <div class="s-rule"></div>
+    <p class="s-text">San Clemente springs from the heart of the Swiss pre-Alps, filtered through ancient granite over centuries. Certified by the Bellinzona Cantonal Laboratory. Bottled at source by Tamaro Drinks SA under FSSC 22000 standards.</p>
+    <div class="s-specs">
+      <div class="spec-row"><span class="spec-name">Calcium</span><span class="spec-val">7.7 mg/l</span></div>
+      <div class="spec-row"><span class="spec-name">Magnesium</span><span class="spec-val">1.6 mg/l</span></div>
+      <div class="spec-row"><span class="spec-name">Nitrates</span><span class="spec-val">3.7 mg/l</span></div>
+      <div class="spec-row"><span class="spec-name">Conductivity</span><span class="spec-val">55 µS/cm</span></div>
+      <div class="spec-row"><span class="spec-name">Shelf life</span><span class="spec-val">24 months</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTLE SHOWCASE -->
+<section class="showcase">
+  <div class="showcase-img"></div>
+  <div class="showcase-overlay"></div>
+  <div class="showcase-content">
+    <div class="s-label">Caribbean Edition</div>
+    <h2 class="s-title">Plenilunium.<br>The sparkling<br><em>experience.</em></h2>
+    <div class="s-rule"></div>
+    <p class="s-text">Our signature sparkling water, bottled in hand-crafted glass. Created for tables that demand nothing but perfection. Served at the finest addresses in Nassau.</p>
+    <a href="#products" class="btn-primary" style="margin-top:32px;display:inline-block;">Shop Plenilunium</a>
+  </div>
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header">
+    <div class="s-label" style="text-align:center;">The Collection</div>
+    <h2 class="s-title" style="text-align:center;">Every format.<br>One standard.</h2>
+    <div class="pricing-toggle">
+      <button class="ptab active" onclick="showPricing('b2c',this)">Individual (B2C)</button>
+      <button class="ptab" onclick="showPricing('b2b',this)">30+ Pack (B2B −25%)</button>
+    </div>
+  </div>
+
+  <!-- B2C GRID -->
+  <div class="products-grid" id="grid-b2c">
+    <div class="pcard hero-card">
+      <div class="pcard-tag">★ Caribbean Edition</div>
+      <div class="pcard-name">Plenilunium Sparkling 33cl Glass</div>
+      <div class="pcard-desc">Signature sparkling in Caribbean edition glass. The choice of Nassau's finest tables.</div>
+      <div class="pcard-price">$5 <span>/ bottle</span></div>
+      <a href="https://buy.stripe.com/28EdR9egv9FP3TJbUub7A1V" class="pcard-btn" target="_blank">Order →</a>
+    </div>
+    <div class="pcard">
+      <div class="pcard-tag">Caribbean Edition</div>
+      <div class="pcard-name">Still Water 33cl Glass</div>
+      <div class="pcard-desc">Pure alpine stillness in our Caribbean glass bottle. Graceful at any table.</div>
+      <div class="pcard-price">$5 <span>/ bottle</span></div>
+      <a href="https://buy.stripe.com/fZueVd6O33hr61R5w6b7A1K" class="pcard-btn" target="_blank">Order →</a>
+    </div>
+    <div class="pcard">
+      <div class="pcard-tag">Premium Glass</div>
+      <div class="pcard-name">Still Water 1.0L Glass</div>
+      <div class="pcard-desc">The full-size glass experience. For private dining, home, and the discerning palate.</div>
+      <div class="pcard-price">$7 <span>/ bottle</span></div>
+      <a href="https://buy.stripe.com/14A9ATc8ng4dfCrgaKb7A1L" class="pcard-btn" target="_blank">Order →</a>
+    </div>
+    <div class="pcard">
+      <div class="pcard-tag">Daily Hydration</div>
+      <div class="pcard-name">Still Water 500ml PET</div>
+      <div class="pcard-desc">Ideal for sport, travel, and everyday wellness. Recommended for low-sodium diets.</div>
+      <div class="pcard-price">$4 <span>/ bottle</span></div>
+      <a href="https://buy.stripe.com/dRm5kDegvaJTai78Iib7A1F" class="pcard-btn" target="_blank">Order →</a>
+    </div>
+  </div>
+
+  <!-- B2B GRID -->
+  <div class="products-grid" id="grid-b2b" style="display:none;">
+    <div class="pcard hero-card">
+      <div class="pcard-tag">★ B2B · Pack 30 · −25%</div>
+      <div class="pcard-name">Plenilunium Sparkling 33cl × 30</div>
+      <div class="pcard-desc">30 Caribbean edition sparkling glass bottles. For restaurants, hotels, events. 25% off the retail price.</div>
+      <div class="pcard-price">$112.50 <span>/ pack · $3.75/bt</span></div>
+      <a href="https://buy.stripe.com/7sY7sL0pF4lv4XNcYyb7A2K" class="pcard-btn" target="_blank">Order B2B →</a>
+    </div>
+    <div class="pcard">
+      <div class="pcard-tag">B2B · Pack 30 · −25%</div>
+      <div class="pcard-name">Still Water 33cl Glass × 30</div>
+      <div class="pcard-desc">30 Caribbean edition still glass bottles. Trade pricing for professionals and resellers.</div>
+      <div class="pcard-price">$112.50 <span>/ pack · $3.75/bt</span></div>
+      <a href="https://buy.stripe.com/cNi14n1tJf0975V9Mmb7A2L" class="pcard-btn" target="_blank">Order B2B →</a>
+    </div>
+    <div class="pcard">
+      <div class="pcard-tag">B2B · Pack 30 · −25%</div>
+      <div class="pcard-name">Still Water 1.0L Glass × 30</div>
+      <div class="pcard-desc">30 full-size glass bottles at trade pricing. Ideal for hotel rooms, restaurants, and premium venues.</div>
+      <div class="pcard-price">$157.50 <span>/ pack · $5.25/bt</span></div>
+      <a href="https://buy.stripe.com/5kQ28r7S75pz61RcYyb7A2M" class="pcard-btn" target="_blank">Order B2B →</a>
+    </div>
+    <div class="pcard">
+      <div class="pcard-tag">B2B · Pack 30 · −25%</div>
+      <div class="pcard-name">Still Water 500ml PET × 30</div>
+      <div class="pcard-desc">30 PET bottles at trade pricing. Perfect for gyms, offices, and corporate wellness programs.</div>
+      <div class="pcard-price">$90.00 <span>/ pack · $3.00/bt</span></div>
+      <a href="https://buy.stripe.com/fZu14ngoD9FPfCr3nYb7A2N" class="pcard-btn" target="_blank">Order B2B →</a>
+    </div>
+  </div>
+
+  <div class="products-note">
+    <span id="note-b2c">B2C pricing · Individual bottles · Delivered across Nassau · Secure payment via Stripe</span>
+    <span id="note-b2b" style="display:none;">B2B pricing · 25% discount · Minimum 30 bottles · Invoicing available · Contact us for recurring orders</span>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="lifestyle">
+  <div class="lifestyle-img"></div>
+  <div class="lifestyle-overlay"></div>
+  <div class="lifestyle-content">
+    <blockquote class="lifestyle-quote">"The finest water<br>deserves the finest setting."</blockquote>
+    <p class="lifestyle-author">Champion Spirit · Nassau, Bahamas</p>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery" id="delivery">
+  <div>
+    <div class="s-label">Nassau Delivery</div>
+    <h2 class="s-title">Delivered to your<br>door.</h2>
+    <div class="s-rule"></div>
+    <p class="s-text">Exclusively distributed across Nassau by Champion Spirit International. Order online — delivered to your home, yacht, office, or estate.</p>
+    <a href="#products" class="btn-primary" style="display:inline-block;margin-top:36px;background:var(--gold);">Shop the Collection</a>
+  </div>
+  <ul class="del-list">
+    <li class="del-item">Home &amp; estate delivery · Nassau &amp; New Providence</li>
+    <li class="del-item">Individual bottles, packs, and bulk orders</li>
+    <li class="del-item">Office &amp; yacht recurring delivery</li>
+    <li class="del-item">Hotel and restaurant wholesale supply</li>
+    <li class="del-item">Secure payment · Stripe certified</li>
+    <li class="del-item">Distributed by Champion Spirit International</li>
+  </ul>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-name" style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#fff;letter-spacing:5px;">San Clemente</div>
+    <div class="nav-origin" style="font-size:9px;letter-spacing:4px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-top:4px;">Swiss Alpine Water · Nassau</div>
+  </div>
+  <div class="footer-info">
+    Distributed by Champion Spirit International<br>
+    Lot 9-10 South Ocean Boulevard · Nassau, New Providence, Bahamas<br>
+    sanclementeswisswater.com · © 2026
+  </div>
+</footer>
+
+
+<script>
+function showPricing(type, el) {
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  if (type === 'b2c') {
+    document.getElementById('grid-b2c').style.display = 'grid';
+    document.getElementById('grid-b2b').style.display = 'none';
+    document.getElementById('note-b2c').style.display = 'inline';
+    document.getElementById('note-b2b').style.display = 'none';
+  } else {
+    document.getElementById('grid-b2c').style.display = 'none';
+    document.getElementById('grid-b2b').style.display = 'grid';
+    document.getElementById('note-b2c').style.display = 'none';
+    document.getElementById('note-b2b').style.display = 'inline';
+  }
+}
+</script>
+
+</body>
+</html>
